@@ -1,3 +1,4 @@
-# Test project
+# Test project 
 
-This project was created for improve experience in React
+This project was developed as ReactJs on front-end and .Net6 (WebApi) on back-end
+As database is used PostgreeSQL
