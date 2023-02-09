@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 
 const MainPage = () =>{
     return(
-    <Layout>
+    <Layout nickName="Aleks" id="2">
         <div>main page</div>
     </Layout>
     );
