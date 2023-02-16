@@ -5,7 +5,7 @@ const Layout = ({nickName, avatarUrl, id, children}) =>{
     return(
         <div className='cnLayoutRoot'>
             <Navbar nickName={nickName} avatarUrl={avatarUrl} id={id} />
-            <div className='cnLayoutBody'>content: {children}</div>
+            <div className='cnLayoutBody'>{children}</div>
         </div>
     );
 };

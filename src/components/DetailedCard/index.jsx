@@ -1,12 +1,14 @@
 import UserBadge from '../UserBadge';
 import './style.css';
 
-const DetailedCard = (userName, avatarUrl, userId, imgUrl) =>{
+const DetailedCard = ({nickName, avatarUrl, id, imUrl}) =>{
     return(
-        <div>
-            <div><UserBadge nickName={userName} avatarUrl={avatarUrl} id={userId} /></div>
+        <div className="cnDetailedCardRoot">
+            <div className="cnDetailedCardHeader">
+                <UserBadge nickName={nickName} avatarUrl={avatarUrl} id={id} />
+            </div>
             <div>
-                <img src={imgUrl} />
+                <img src="/" className="cnDetailedCardImg" alt="details" />
             </div>
             <div>
                 like comments
@@ -14,12 +16,12 @@ const DetailedCard = (userName, avatarUrl, userId, imgUrl) =>{
             <div>
                 noted 21 people
             </div>
-            <div>
+            <div className="cnDetailedCardComments">
                 comment
                 comment
                 comment
             </div>
-            <textarea />
+            <textarea className="cnDetailedCardTextArea" />
         </div>
     );
 };
