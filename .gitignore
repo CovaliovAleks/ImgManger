@@ -26,3 +26,4 @@ yarn-error.log*
 /backend/WebApi/obj
 /backend/WebApi/bin
 /backend/WebApi/.vs
+/backend/WebApi/WebApi.csproj.user
