@@ -7,14 +7,14 @@ const DetailedCard = ({nick, avatarUrl, id, imUrl, likes, isLikedByYou, comments
     const [isCommentShown, setCommentShown] = useState(false);
 
     const renderComments= () =>{
-        if(comments.length > 2)
+        if(comments.length > 2 && !isCommentShown)
         {
             const commentsForRender = [...comments];
             commentsForRender.splice(comments.length -2, 2);
 
             return(
                 <>
-                    <span>{'Show ${comments.length}comments'}</span>
+                    <span className="cnDetailedCommentsTitle" onClick={()=>setCommentShown(true)}>Show still {comments.length - commentsForRender.length} comments</span>
                     {commentsForRender.map((comment) => <Comment {...comment} />)}
                 </>
             )
