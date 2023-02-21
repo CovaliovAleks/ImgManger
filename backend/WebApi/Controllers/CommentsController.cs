@@ -40,14 +40,37 @@ namespace WebApi.Controllers
             return comments;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Comment>> Get(int id)
+        {
+            var comment = comments.FirstOrDefault(x => x.Id == id);
+            if (comment == null)
+                return BadRequest("Comment not found");
+
+            return Ok(comment);
+        }
+
+
         [HttpPost]
-        public async Task<ActionResult<List<Comment>>> AddComment(Comment coment)
+        public async Task<ActionResult<List<Comment>>> AddComment([FromForm] Comment coment)
         {
             comments.Add(coment);
 
             return comments;
         }
 
+        [HttpPut]
+        public async Task<ActionResult<List<Comment>>> UpdateComment([FromForm] Comment request)
+        {
+            var comment = comments.FirstOrDefault(x => x.Id == request.Id);
+            if (comment == null)
+                return BadRequest("Comment not found");
+
+            comment.Title = request.Title;
+            comment.Content = request.Content;
+
+            return comments;
+        }
 
     }
 }
