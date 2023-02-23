@@ -1,7 +1,14 @@
-# Photo manager. 
+# Photos
 
-It's web part of Photo manger. 
+It's a test project was done as clone of Instagram. 
 
 ## Description
-This project was developed as ReactJs on front-end and .Net6 (WebApi) on back-end
-As database is used PostgreeSQL
+
+
+## Front-end stack
+- React.JS
+- Redux
+- Axios
+
+## Back-end stack
+- webApi .Net 6
