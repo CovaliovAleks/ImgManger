@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
+using WebApi.Services.CommentService;
 
 namespace WebApi.Controllers
 {
@@ -8,42 +9,23 @@ namespace WebApi.Controllers
     [ApiController]
     public class CommentsController : ControllerBase
     {
-        private static List<Comment> comments= new List<Comment>()
-            {
-                new Comment()
-                    {
-                        Id= 1,
-                        Title = "Title 1",
-                        Content = "Comment 1",
-                        UserName = "User 1"
-                    },
-                new Comment()
-                    {
-                        Id= 2,
-                        Title = "Title 2",
-                        Content = "Comment 2",
-                        UserName = "User 1"
-                    },
-                new Comment()
-                    {
-                        Id= 3,
-                        Title = "Title 3",
-                        Content = "Comment 3",
-                        UserName = "User 2"
-                    }
-            };
+        private readonly ICommentService commentService = null;
 
+        public CommentsController(ICommentService comService)
+        {
+            commentService = comService;
+        }
 
         [HttpGet]
         public async Task<ActionResult<List<Comment>>> Get()
         {
-            return comments;
+            return await commentService.GetAllComments();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Comment>> Get(int id)
         {
-            var comment = comments.FirstOrDefault(x => x.Id == id);
+            var comment = await commentService.GetComment(id);
             if (comment == null)
                 return BadRequest("Comment not found");
 
@@ -54,22 +36,22 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Comment>>> AddComment([FromForm] Comment coment)
         {
-            comments.Add(coment);
+            var nComment = await commentService.AddComment(coment);
 
-            return comments;
+            return await commentService.GetAllComments();
         }
 
         [HttpPut]
         public async Task<ActionResult<List<Comment>>> UpdateComment([FromForm] Comment request)
         {
-            var comment = comments.FirstOrDefault(x => x.Id == request.Id);
+            var comment = await commentService.GetComment(request.Id);
             if (comment == null)
                 return BadRequest("Comment not found");
 
             comment.Title = request.Title;
             comment.Content = request.Content;
 
-            return comments;
+            return await commentService.GetAllComments();
         }
 
     }

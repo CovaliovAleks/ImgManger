@@ -1,8 +1,16 @@
+using WebApi.Services.CommentService;
+using WebApi.Services.PostServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+//builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
