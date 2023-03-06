@@ -17,7 +17,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Post>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<Post>>>> Get()
         {
             return await postService.GetAllPosts();
         }

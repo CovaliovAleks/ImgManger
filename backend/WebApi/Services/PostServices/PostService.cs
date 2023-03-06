@@ -13,27 +13,30 @@ namespace WebApi.Services.PostServices
             }
         };
 
-        public Task<Post> AddPost(Post post)
+        public Task<ServiceResponse<Post>> AddPost(Post post)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Post> DeletePost(Post post)
+        public Task<ServiceResponse<Post>> DeletePost(Post post)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Post>> GetAllPosts()
+        public async Task<ServiceResponse<List<Post>>> GetAllPosts()
         {
-            return posts;
+            var servResponse = new ServiceResponse<List<Post>>() { 
+                Data = posts
+            };
+            return servResponse;
         }
 
-        public Task<Post> GetPostById(int id)
+        public Task<ServiceResponse<Post>> GetPostById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Post> UpdatePost(Post post)
+        public Task<ServiceResponse<Post>> UpdatePost(Post post)
         {
             throw new NotImplementedException();
         }

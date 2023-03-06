@@ -4,14 +4,14 @@ namespace WebApi.Services.PostServices
 {
     public interface IPostService
     {
-        Task<List<Post>> GetAllPosts();
+        Task<ServiceResponse<List<Post>>> GetAllPosts();
 
-        Task<Post> AddPost(Post post);
+        Task<ServiceResponse<Post>> AddPost(Post post);
 
-        Task<Post> UpdatePost(Post post);
+        Task<ServiceResponse<Post>> UpdatePost(Post post);
 
-        Task<Post> DeletePost(Post post);
+        Task<ServiceResponse<Post>> DeletePost(Post post);
 
-        Task<Post> GetPostById(int id);
+        Task<ServiceResponse<Post>> GetPostById(int id);
     }
 }
